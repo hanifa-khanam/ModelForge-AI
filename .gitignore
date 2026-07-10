@@ -1,0 +1,57 @@
+# ==========================
+# Python
+# ==========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Streamlit Cache
+.streamlit/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Environment Variables
+.env
+
+# Model Files
+*.pkl
+*.joblib
+
+# Logs
+*.log
+
+# Temporary Files
+*.tmp
+
+# Testing
+.pytest_cache/
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Uploaded datasets 
+uploads/
+
+# Saved models 
+saved_models/
