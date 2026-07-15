@@ -2,7 +2,7 @@
 Evaluator Module - Model comparison and Leaderboard Generation
 """
 
-from config import PRIMARY_METRIC, SECONDARY_METRIC
+from src.config import PRIMARY_METRIC, SECONDARY_METRIC
 
 def evaluate_models(training_results: dict) -> dict:
     """
@@ -18,8 +18,8 @@ def evaluate_models(training_results: dict) -> dict:
     results = training_results["results"] 
     
     # get the right metric names for this problem type
-    primary_metric = PRIMARY_METRIC["problem_type"]
-    secondary_metric = SECONDARY_METRIC["problem_type"]
+    primary_metric = PRIMARY_METRIC[problem_type]
+    secondary_metric = SECONDARY_METRIC[problem_type]
     
     # sort by primary metric (descending), tiebreak by secondary
     sorted_results = sorted(results, key=lambda r: (r["metrics"][primary_metric], r["metrics"][secondary_metric]), reverse=True)

@@ -25,16 +25,23 @@ def dataset_summary(df):
     """
     rows, cols = df.shape
     
+    numeric_cols = df.select_dtypes(include=["int64", "float64"]).columns.tolist()
+    categorical_cols = df.select_dtypes(include=["object", "category", "bool"]).columns.tolist()
+    
+    missing_total = int(df.isnull().sum().sum())
+    duplicate_total = int(df.duplicated().sum())
+    
     summary = {
-        "Rows": rows,
-        "Columns": cols,
-        "Numerical Columns": len(df.select_dtypes(include=["int64", "float64"]).columns),
-        "Categorical Columns": len(df.select_dtypes(exclude=["object", "category", "bool"]).columns),
-        "Missing Values" : int(df.isnull().sum().sum()),
-        "Missing Percentage" : round((df.isnull().sum().sum() / (rows * cols)) * 100, 2),
-        "Duplicate Rows" : int(df.duplicated().sum()),
-        "Duplicate Percentage" : round((df.duplicated().sum() / rows) * 100, 2) if rows > 0 else 0,
-        "Memory Usage (MB)" : round(df.memory_usage(deep=True).sum() / (1024 * 1024), 2)
+        "rows": rows,
+        "columns": cols,
+        "numeric_columns": len(numeric_cols),
+        "categorical_columns": len(categorical_cols),
+        "total_missing_values": missing_total,
+        "columns_with_missing": int((df.isnull().sum() > 0).sum()),
+        "missing_percentage": round((missing_total / (rows * cols)) * 100, 2) if rows * cols > 0 else 0,
+        "duplicate_rows": duplicate_total,
+        "duplicate_percentage": round((duplicate_total / rows) * 100, 2) if rows > 0 else 0,
+        "memory_usage_mb": round(df.memory_usage(deep=True).sum() / (1024 * 1024), 2),
     }
     
     return summary

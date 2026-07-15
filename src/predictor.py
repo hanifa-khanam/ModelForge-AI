@@ -83,10 +83,14 @@ def predict(pipeline: Dict[str, Any], data: pd.DataFrame) -> Dict[str, Any]:
             else:
                 classes = model.classes_
             
-            prediction_proba = {
-                str(classes[i]): round(float(proba[0][i]), 4)
-                for i in range(len(classes))
-            }
+            prediction_proba = []
+            for row_proba in proba:
+                sample_proba = {
+                    str(classes[i]): round(float(row_proba[i]), 4)
+                    for i in range(len(classes))
+                    }
+                prediction_proba.append(sample_proba)
+                
         except Exception:
             prediction_proba = None
     

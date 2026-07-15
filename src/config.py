@@ -92,6 +92,118 @@ RECOMMENDATION_WEIGHTS = {
 OVERFITTING_THRESHOLD = 0.05  # 5% gap
 OVERFITTING_PENALTY = -15
 
+# Hyperparameter Tuning 
+PARAM_GRID_CLASSIFICATION = {
+    "Logistic Regression": {
+        "C": [0.01, 0.1, 1.0, 10.0],
+        "solver": ["liblinear", "lbfgs"],
+        "penalty": ["l2"],  # l2 works with both solvers
+    },
+    "K-Nearest Neighbors": {
+        "n_neighbors": [3, 5, 7, 9, 11],
+        "weights": ["uniform", "distance"],
+        "metric": ["euclidean", "manhattan"],
+    },
+    "Naive Bayes": {
+        "var_smoothing": [1e-9, 1e-8, 1e-7, 1e-6],
+    },
+    "SVM": {
+        "C": [0.1, 1.0, 10.0],
+        "kernel": ["linear", "rbf"],
+        "gamma": ["scale", "auto"],
+    },
+    "Decision Tree": {
+        "max_depth": [None, 5, 10, 20, 30],
+        "min_samples_split": [2, 5, 10],
+        "min_samples_leaf": [1, 2, 4],
+        "criterion": ["gini", "entropy"],
+    },
+    "Random Forest": {
+        "n_estimators": [50, 100, 200],
+        "max_depth": [None, 10, 20, 30],
+        "min_samples_split": [2, 5, 10],
+        "min_samples_leaf": [1, 2, 4],
+    },
+    "AdaBoost": {
+        "n_estimators": [50, 100, 200],
+        "learning_rate": [0.01, 0.1, 0.5, 1.0],
+    },
+    "Gradient Boosting": {
+        "n_estimators": [50, 100, 200],
+        "learning_rate": [0.01, 0.1, 0.2],
+        "max_depth": [3, 5, 7],
+        "min_samples_split": [2, 5],
+    },
+    "XGBoost": {
+        "n_estimators": [50, 100, 200],
+        "learning_rate": [0.01, 0.1, 0.2],
+        "max_depth": [3, 5, 7],
+        "subsample": [0.8, 1.0],
+        "colsample_bytree": [0.8, 1.0],
+    },
+}
+
+PARAM_GRID_REGRESSION = {
+    "Linear Regression": {
+        # No hyperparameters to tune
+    },
+    "Ridge Regression": {
+        "alpha": [0.01, 0.1, 1.0, 10.0, 100.0],
+        "solver": ["auto", "svd", "cholesky"],
+    },
+    "Lasso Regression": {
+        "alpha": [0.001, 0.01, 0.1, 1.0, 10.0],
+        "max_iter": [1000, 5000],
+    },
+    "ElasticNet": {
+        "alpha": [0.001, 0.01, 0.1, 1.0],
+        "l1_ratio": [0.1, 0.3, 0.5, 0.7, 0.9],
+        "max_iter": [1000, 5000],
+    },
+    "Decision Tree": {
+        "max_depth": [None, 5, 10, 20, 30],
+        "min_samples_split": [2, 5, 10],
+        "min_samples_leaf": [1, 2, 4],
+        "criterion": ["squared_error", "friedman_mse", "absolute_error"],
+    },
+    "Random Forest": {
+        "n_estimators": [50, 100, 200],
+        "max_depth": [None, 10, 20, 30],
+        "min_samples_split": [2, 5, 10],
+        "min_samples_leaf": [1, 2, 4],
+    },
+    "AdaBoost": {
+        "n_estimators": [50, 100, 200],
+        "learning_rate": [0.01, 0.1, 0.5, 1.0],
+        "loss": ["linear", "square", "exponential"],
+    },
+    "Gradient Boosting": {
+        "n_estimators": [50, 100, 200],
+        "learning_rate": [0.01, 0.1, 0.2],
+        "max_depth": [3, 5, 7],
+        "min_samples_split": [2, 5],
+        "loss": ["squared_error", "absolute_error"],
+    },
+    "XGBoost": {
+        "n_estimators": [50, 100, 200],
+        "learning_rate": [0.01, 0.1, 0.2],
+        "max_depth": [3, 5, 7],
+        "subsample": [0.8, 1.0],
+        "colsample_bytree": [0.8, 1.0],
+    },
+    "SVR": {
+        "C": [0.1, 1.0, 10.0],
+        "kernel": ["linear", "rbf"],
+        "gamma": ["scale", "auto"],
+        "epsilon": [0.01, 0.1, 0.5],
+    },
+}
+
+# Cross-Validation Settings
+CV_FOLDS = 5
+TUNING_SCORING_CLASSIFICATION = "f1_weighted"
+TUNING_SCORING_REGRESSION = "r2"
+
 
 #  UI Settings
 APP_TITLE = "ModelForge AI"

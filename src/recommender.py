@@ -2,7 +2,7 @@
 Applies weighted scoring to model evaluation results and produces a final recommendation with human-readable reasoning.
 """
 
-from config import PRIMARY_METRIC, RECOMMENDATION_WEIGHTS, OVERFITTING_THRESHOLD, OVERFITTING_PENALTY
+from src.config import PRIMARY_METRIC, RECOMMENDATION_WEIGHTS, OVERFITTING_THRESHOLD, OVERFITTING_PENALTY
 
 def recommend_model(evaluation: dict, training_results: dict, prefer_fast: bool=False) -> dict:
     """

@@ -36,15 +36,11 @@ def main():
             <p style="font-size: 1.1rem; color:#B8B8B8; margin: 1rem 0;">
                 Upload your dataset and let ModelForge AI handle the entire ML workflow
             </p>
-            <div style="margin-top: 1.5rem;">
-                <a href="/pages/1_Data_Analysis.py" target="_self">
-                    <button style="background-color: #FF6B6B; color: white; border: none; padding: 0.75rem 3rem; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer;">
-                        📤 Upload Dataset
-                    </button>
-                </a>
-            </div>
         </div>
         """, unsafe_allow_html=True)
+        
+        if st.button("📤 Upload Dataset", use_container_width=True):
+            st.switch_page("pages/1_Data_Analysis.py")
 
     st.markdown("---")
     
