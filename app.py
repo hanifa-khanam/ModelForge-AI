@@ -1,3 +1,7 @@
+import os
+os.environ["LOKY_MAX_CPU_COUNT"] = "1"
+os.environ["OMP_NUM_THREADS"] = "1"
+
 import streamlit as st
 import pandas as pd
 
@@ -8,6 +12,8 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+from src.session_state import init_session_state
+init_session_state()
 
 st.markdown("""
 <style>

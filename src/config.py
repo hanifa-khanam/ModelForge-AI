@@ -3,6 +3,10 @@ Single source of truth for all project settings.
 """
 
 import os
+os.environ["LOKY_MAX_CPU_COUNT"] = "1"
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["XGBOOST_NUM_THREADS"] = "1"
+
 from sklearn.linear_model import LogisticRegression, LinearRegression, Ridge, Lasso, ElasticNet
 from sklearn.ensemble import (
     RandomForestClassifier, RandomForestRegressor,

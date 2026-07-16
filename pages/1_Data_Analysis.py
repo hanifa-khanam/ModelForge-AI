@@ -17,17 +17,8 @@ st.set_page_config(
     layout="wide",
 )
 
-# Initialize session state
-if "dataframe" not in st.session_state:
-    st.session_state.dataframe = None
-if "target_column" not in st.session_state:
-    st.session_state.target_column = None
-if "problem_type" not in st.session_state:
-    st.session_state.problem_type = None
-if "validation_result" not in st.session_state:
-    st.session_state.validation_result = None
-if "eda_results" not in st.session_state:
-    st.session_state.eda_results = None
+from src.session_state import init_session_state
+init_session_state()
 
 st.title("🔍 Data Analysis")
 st.markdown("Upload your dataset and explore it before training models.")

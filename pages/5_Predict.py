@@ -16,10 +16,9 @@ st.set_page_config(
     layout="wide",
 )
 
-if "loaded_pipeline" not in st.session_state:
-    st.session_state.loaded_pipeline = None
-if "pipeline_metadata" not in st.session_state:
-    st.session_state.pipeline_metadata = None
+from src.session_state import init_session_state
+init_session_state()
+
 
 st.title("🔮 Predict with Saved Model")
 st.markdown("Upload a trained model bundle and make predictions on new data.")
