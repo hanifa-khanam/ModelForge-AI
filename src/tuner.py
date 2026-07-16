@@ -88,7 +88,7 @@ def tune_models(preprocessed_data: dict, cv_folds: int = CV_FOLDS) -> dict:
             param_grid=param_grid,
             cv=cv_folds,
             scoring=scoring,
-            n_jobs=-1,
+            n_jobs=1,
             verbose=0,
             error_score="raise",
         )

@@ -19,6 +19,14 @@ st.set_page_config(
 )
 
 # ── Initialize Session State ──
+if "dataframe" not in st.session_state:
+    st.session_state.dataframe = None
+if "target_column" not in st.session_state:
+    st.session_state.target_column = None
+if "problem_type" not in st.session_state:
+    st.session_state.problem_type = None
+if "validation_result" not in st.session_state:
+    st.session_state.validation_result = None
 if "preprocessed_data" not in st.session_state:
     st.session_state.preprocessed_data = None
 if "training_results" not in st.session_state:
@@ -26,7 +34,7 @@ if "training_results" not in st.session_state:
 if "is_training" not in st.session_state:
     st.session_state.is_training = False
 if "training_mode" not in st.session_state:
-    st.session_state.training_mode = None  # "default" or "tuned"
+    st.session_state.training_mode = None
 if "tuning_metadata" not in st.session_state:
     st.session_state.tuning_metadata = None
 if "total_training_time" not in st.session_state:

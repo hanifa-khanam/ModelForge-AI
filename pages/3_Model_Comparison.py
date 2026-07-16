@@ -15,7 +15,14 @@ st.set_page_config(
     page_icon="📊",
     layout="wide",
 )
-
+if "dataframe" not in st.session_state:
+    st.session_state.dataframe = None
+if "target_column" not in st.session_state:
+    st.session_state.target_column = None
+if "problem_type" not in st.session_state:
+    st.session_state.problem_type = None
+if "validation_result" not in st.session_state:
+    st.session_state.validation_result = None
 if "evaluation_results" not in st.session_state:
     st.session_state.evaluation_results = None
 if "recommendation" not in st.session_state:
